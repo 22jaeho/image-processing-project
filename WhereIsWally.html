@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where is Wally!</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    
+    <style>
+        
+        @charset "UTF-8";
+        @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+        body {
+        margin: 0;
+        padding: 0;
+        background: #2D2F33;
+        font-family: "Varela Round", "Ionicons";
+        }
+
+        .map1 {
+        position: absolute;
+        top: calc(15%);
+        left: calc(50% - 600px);
+        width: 230px;
+        height: 60px;
+        background-image: -webkit-linear-gradient(bottom, rgba(255, 0, 0, 0.075), rgba(0, 0, 0, 0.045));
+        background-image: linear-gradient(to top, rgba(255, 255, 255,1), rgba(255, 255, 255,0.3));
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.09), inset 0 1px 0 rgb(188, 236, 255), 0 0 1px rgba(0, 0, 0, 1), 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 100px;
+        color: rgba(0, 0, 0, 0.9);
+        line-height: 60px;
+        text-align: center;
+        letter-spacing: 5px;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.67, 0.13, 0.1, 0.81), transform 0.15s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+        }
+
+        .map1:hover {
+        left: calc(50% - 685px);
+        width: 400px;
+        }
+
+        .map1:active {
+        transform: translateY(3px);
+        }
+
+        .map1:before, .map1:after {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        transition: all 0.3s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+        }
+
+        .map1:before {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serifs;
+        font-size: 25px;
+        
+        content: "Easy";
+        }
+
+        .map1:after {
+            font-family: 'Black Han Sans', sans-serif;
+        font-size: 25px;
+        content: "쉬움";
+        top: -60px;
+        opacity: 0;
+        }
+
+        .map1:hover:after {
+        top: 0px;
+        opacity: 1;
+        }
+
+        .map1:hover:before {
+        top: 60px;
+        opacity: 0;
+        }
+
+        .map2 {
+        position: absolute;
+        top: calc(15%);
+        left: calc(50% - 115px);
+        width: 230px;
+        height: 60px;
+        background-image: -webkit-linear-gradient(bottom, rgba(255, 0, 0, 0.075), rgba(0, 0, 0, 0.045));
+        background-image: linear-gradient(to top, rgba(255, 255, 255,1), rgba(255, 255, 255,0.3));
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.09), inset 0 1px 0 rgb(188, 236, 255), 0 0 1px rgba(0, 0, 0, 1), 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 100px;
+        color: rgba(0, 0, 0, 0.9);
+        line-height: 60px;
+        text-align: center;
+        letter-spacing: 5px;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.67, 0.13, 0.1, 0.81), transform 0.15s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+        }
+
+        .map2:hover {
+        left: calc(50% - 200px);
+        width: 400px;
+        }
+
+        .map2:active {
+        transform: translateY(3px);
+        }
+
+        .map2:before, .map2:after {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        transition: all 0.3s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+        }
+
+        .map2:before {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serifs;
+        font-size: 25px;
+        content: "Normal";
+        }
+
+        .map2:after {
+        font-family: 'Black Han Sans', sans-serif;
+        font-size: 25px;
+        content: "보통";
+        top: -60px;
+        opacity: 0;
+        }
+
+        .map2:hover:after {
+        top: 0px;
+        opacity: 1;
+        }
+
+        .map2:hover:before {
+        top: 60px;
+        opacity: 0;
+        }
+
+        .map3 {
+        position: absolute;
+        top: calc(15%);
+        left: calc(50% + 400px);
+        width: 230px;
+        height: 60px;
+        background-image: -webkit-linear-gradient(bottom, rgba(255, 0, 0, 0.075), rgba(0, 0, 0, 0.045));
+        background-image: linear-gradient(to top, rgba(255, 255, 255,1), rgba(255, 255, 255,0.3));
+        box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.09), inset 0 1px 0 rgb(188, 236, 255), 0 0 1px rgba(0, 0, 0, 1), 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 100px;
+        color: rgba(0, 0, 0, 0.9);
+        line-height: 60px;
+        text-align: center;
+        letter-spacing: 5px;
+        overflow: hidden;
+        transition: all 0.3s cubic-bezier(0.67, 0.13, 0.1, 0.81), transform 0.15s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+        }
+
+        .map3:hover {
+        left: calc(50% + 315px);
+        width: 400px;
+        }
+
+        .map3:active {
+        transform: translateY(3px);
+        }
+
+        .map3:before, .map3:after {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        transition: all 0.3s cubic-bezier(0.67, 0.13, 0.1, 0.81);
+        }
+
+        .map3:before {
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serifs;
+        font-size: 25px;
+        
+        content: "Hard";
+        }
+
+        .map3:after {
+        font-family: 'Black Han Sans', sans-serif;
+        font-size: 25px;
+        content: "어려움";
+        top: -60px;
+        opacity: 0;
+        }
+
+        .map3:hover:after {
+        top: 0px;
+        opacity: 1;
+        }
+
+        .map3:hover:before {
+        top: 60px;
+        opacity: 0;
+        }
+    </style>
+    <script>
+        
+        // 전역 변수(*중요*)
+        var inCanvas, inCtx, outCanvas, outCtx;  // 입력 캔버스 관련
+        var inFile, inImageArray, outImageArray;  // 입력 파일 및 배열
+        var inWidth, inHeight, outWidth, outHeight;  // 입력 영상의 폭과 높이
+        var inPaper, outPaper; // 캔버스에는 한점한점이 안찍힘. 대신 캔버스에 종이를 붙임.
+        function init() {
+            inCanvas = document.getElementById('inCanvas');
+            inCtx = inCanvas.getContext('2d');
+            outCanvas = document.getElementById('outCanvas');
+            outCtx = outCanvas.getContext('2d');
+        }
+
+        
+        function openImage(value) {
+            
+            // 그림파일 --> 이미지 객체
+            var inImage = new Image(); // 빈 이미지 객체 생성
+            inImage.src = value+".jpg";
+          
+
+            inImage.onload = function() {
+                // 입력 파일의 크기를 알아냄 (중요!)
+                inWidth = inImage.width;
+                inHeight = inImage.height;
+                // 캔버스 크기를 결정
+                inCanvas.width = inWidth;
+                inCanvas.height = inHeight;
+                inCtx.drawImage(inImage,0,0,inWidth, inHeight);
+                // 입력 3차원 배열을 준비
+                inImageArray = new Array(3); // 3장짜리 배열 (R, G, B)
+                for(var i=0; i<3; i++) {
+                    inImageArray[i] = new Array(inHeight);
+                    for(var k=0; k<inHeight; k++)
+                        inImageArray[i][k] = new Array(inWidth);
+                }
+                // 출력된 캔버스에서 픽셀값 뽑기
+                var imageData = inCtx.getImageData(0,0,inWidth, inHeight);
+                var R,G,B,Alpha;
+                for (var i=0; i<inHeight; i++) {
+                    for(var k=0; k<inWidth; k++) {
+                        px = (i * inWidth + k) * 4; // 1픽셀 = 4byte
+                        R = imageData.data[px + 0];
+                        G = imageData.data[px + 1];
+                        B = imageData.data[px + 2];
+                        // Alpha = imageData.data[px + 3];
+                        inImageArray[0][i][k] = String.fromCharCode(R);
+                        inImageArray[1][i][k] = String.fromCharCode(G);
+                        inImageArray[2][i][k] = String.fromCharCode(B);
+                    }
+                }
+                
+            }
+            image_mouse(value);           
+        }        
+
+        
+        function image_mouse(value) {
+
+            // O 그리기
+            function drawO(){
+                inCtx.beginPath();
+                inCtx.strokeStyle = "rgb(255, 0, 0)" ; // 붓 색깔
+                inCtx.lineWidth = 5;
+                inCtx.arc(sx,sy,25,2*Math.PI, false);
+                inCtx.stroke(); //ctx는 실제 안에 있는 내용들
+                setTimeout(function(){
+                    window.alert("정답")
+                    
+                }, 100);
+                outCtx.beginPath();
+                outCtx.strokeStyle = "rgb(255, 0, 0)" ; // 붓 색깔
+                outCtx.lineWidth = 7;
+                outCtx.arc(inWidth/2,inHeight/2,50,2*Math.PI, false);
+                outCtx.stroke(); //ctx는 실제 안에 있는 내용들
+            }
+            // X 그리기
+            function drawX(){
+                inCtx.beginPath();
+                inCtx.strokeStyle = "rgb(255, 0, 0)" ; // 붓 색깔
+                inCtx.lineWidth = 6;
+                inCtx.moveTo(sx-20,sy-20);
+                inCtx.lineTo(sx+20,sy+20);
+                inCtx.moveTo(sx+20,sy-20);
+                inCtx.lineTo(sx-20,sy+20);
+                inCtx.stroke();
+                inCtx.closePath();
+
+                outCtx.beginPath();
+                outCtx.strokeStyle = "rgb(255, 0, 0)" ; // 붓 색깔
+                outCtx.lineWidth = 8;
+                outCtx.moveTo(inWidth/2-30,inHeight/2-30);
+                outCtx.lineTo(inWidth/2+30,inHeight/2+30);
+                outCtx.moveTo(inWidth/2+30,inHeight/2-30);
+                outCtx.lineTo(inWidth/2-30,inHeight/2+30);
+                outCtx.stroke();
+                outCtx.closePath();
+            }
+           
+            // -------------------------------------------- 마우스 클릭 --------------------------------------------------------------------------
+            inCanvas.addEventListener("click", clickMouse, false);
+            function clickMouse(e) {
+                inPaper = inCtx.createImageData(inWidth, inHeight);
+                for(var i=0; i<inHeight; i++) {
+                    for (var k=0; k<inWidth; k++) {
+                        R = inImageArray[0][i][k].charCodeAt(0); // Byte 문자를 숫자로.
+                        G = inImageArray[1][i][k].charCodeAt(0); // Byte 문자를 숫자로.
+                        B = inImageArray[2][i][k].charCodeAt(0); // Byte 문자를 숫자로.
+                        inPaper.data[(i*inWidth + k) * 4 + 0] = R;
+                        inPaper.data[(i*inWidth + k) * 4 + 1] = G;
+                        inPaper.data[(i*inWidth + k) * 4 + 2] = B;
+                        inPaper.data[(i*inWidth + k) * 4 + 3] = 255;
+                    }
+                }
+                inCtx.putImageData(inPaper, 0, 0);
+
+                // 파일 별 정답 범위
+                sx = e.offsetX;   sy = e.offsetY;
+                if(value == 1){
+                    if(440 < sx  && sx < 457 && 498 < sy && sy < 520){
+                        drawO()
+                    }
+                    else{
+                        drawX();
+                    }
+                }
+
+                else if(value == 2){
+                    if(755 < sx  && sx < 775 && 185 < sy && sy < 203){
+                        drawO()
+                    }
+                    else{
+                        drawX();
+                    }
+                }
+                else if(value == 3){
+                    if(88 < sx  && sx < 107 && 515 < sy && sy < 538){
+                        drawO()
+                    }
+                    else{
+                        drawX();
+                    }
+                }
+            }
+
+            
+            // --------------------------------------- 마우스 커서 이동시 확대 --------------------------------------------------------------------------
+            inCanvas.addEventListener("mousemove", moveMouse, false);
+            function moveMouse(e) {
+                // 기본 이미지
+                inPaper = inCtx.createImageData(inWidth, inHeight);
+                    for(var i=0; i<inHeight; i++) {
+                        for (var k=0; k<inWidth; k++) {
+                            
+                            R = inImageArray[0][i][k].charCodeAt(0); // Byte 문자를 숫자로.
+                            G = inImageArray[1][i][k].charCodeAt(0); // Byte 문자를 숫자로.
+                            B = inImageArray[2][i][k].charCodeAt(0); // Byte 문자를 숫자로.
+                            inPaper.data[(i*inWidth + k) * 4 + 0] = R;
+                            inPaper.data[(i*inWidth + k) * 4 + 1] = G;
+                            inPaper.data[(i*inWidth + k) * 4 + 2] = B;
+                            inPaper.data[(i*inWidth + k) * 4 + 3] = 255;
+                        }
+                    }
+                inCtx.putImageData(inPaper, 0, 0);
+
+                
+                // 이미지 초기화
+                var R, G, B;
+
+                sx = e.offsetX;   sy = e.offsetY;
+                // (중요!) 출력 영상의 크기를 결정... 알고리즘에 따름.
+                outHeight = inHeight;
+                outWidth = inWidth;
+                // 출력 3차원 배열을 준비
+                outImageArray = new Array(3); 
+                for (var i=0; i<3; i++) {
+                    outImageArray[i] = new Array(outHeight);
+                    for(var k=0; k<outHeight; k++) 
+                        outImageArray[i][k] = new Array(outWidth);
+                }
+
+                // 확대 범위 표시
+                inCtx.beginPath();
+                inCtx.strokeStyle = "rgb(0, 0, 0)"; // 붓 색깔
+                inCtx.lineWidth = 1;
+                inCtx.rect(sx-inWidth/4, sy-inHeight/4, inWidth/2, inHeight/2);
+                inCtx.stroke(); //ctx는 실제 안에 있는 내용들
+                inCtx.closePath();
+                // console.log(sx,sy);
+
+                
+                // ------------------------------------------------- 영상처리 알고리즘 ---------------------------------------------------------
+
+                // 1.5배 큰 배열 생성
+                inTempImageArray = new Array(3); 
+                for (var i=0; i<3; i++) {
+                    inTempImageArray[i] = new Array(parseInt(inHeight*1.5)); 
+                    for(var k=0; k<parseInt(inHeight *1.5); k++) 
+                        inTempImageArray[i][k] = new Array(parseInt(inWidth*1.5));
+                }
+                
+                // 1.5배 큰 이미지 생성
+                for (var i=0; i<parseInt(inHeight*1.5); i++) {
+                    for(var k=0; k<parseInt(inWidth*1.5); k++) {
+                        inTempImageArray[0][i][k] = String.fromCharCode(0);
+                        inTempImageArray[1][i][k] = String.fromCharCode(0);
+                        inTempImageArray[2][i][k] = String.fromCharCode(0);
+                    }
+                }
+
+                // 원래 이미지 복사
+                for (var i=0; i<inHeight; i++) {
+                    for(var k=0; k<inWidth; k++) {
+                        inTempImageArray[0][i+parseInt(inHeight/4)][k+parseInt(inWidth/4)] = inImageArray[0][i][k];
+                        inTempImageArray[1][i+parseInt(inHeight/4)][k+parseInt(inWidth/4)] = inImageArray[1][i][k];
+                        inTempImageArray[2][i+parseInt(inHeight/4)][k+parseInt(inWidth/4)] = inImageArray[2][i][k];
+                    }
+                }
+
+                // 확대 알고리즘
+                outTempImageArray = new Array(3);
+                for (var i=0; i<3; i++) {
+                    outTempImageArray[i] = new Array(parseInt(inHeight/2)); 
+                    for(var k=0; k<outHeight; k++) 
+                        outTempImageArray[i][k] = new Array(parseInt(inWidth/2));
+                }
+
+                for(var i=0; i<parseInt(inHeight/2); i++) {
+                    for (var k=0; k<parseInt(inWidth/2); k++) {
+                        outTempImageArray[0][i][k] = inTempImageArray[0][i+(sy)][k+(sx)];
+                        outTempImageArray[1][i][k] = inTempImageArray[1][i+(sy)][k+(sx)];
+                        outTempImageArray[2][i][k] = inTempImageArray[2][i+(sy)][k+(sx)];
+                    }
+                }
+                
+                for(var i=0; i<inHeight; i++) {
+                    for (var k=0; k<inWidth; k++) {
+                        outImageArray[0][i][k] = outTempImageArray[0][parseInt(i/2)][parseInt(k/2)];
+                        outImageArray[1][i][k] = outTempImageArray[1][parseInt(i/2)][parseInt(k/2)];
+                        outImageArray[2][i][k] = outTempImageArray[2][parseInt(i/2)][parseInt(k/2)];
+                    }
+                }
+
+                outCanvas.height = outHeight;
+                outCanvas.width = outWidth;
+                
+                var R, G, B;
+                outPaper = outCtx.createImageData(outWidth, outHeight);
+                
+                for(var i=0; i<outHeight; i++) {
+                    for (var k=0; k<outWidth; k++) {
+                        R = outImageArray[0][i][k].charCodeAt(0); // Byte 문자를 숫자로.
+                        G = outImageArray[1][i][k].charCodeAt(0); // Byte 문자를 숫자로.
+                        B = outImageArray[2][i][k].charCodeAt(0); // Byte 문자를 숫자로.
+                        outPaper.data[(i*outWidth + k) * 4 + 0] = R;
+                        outPaper.data[(i*outWidth + k) * 4 + 1] = G;
+                        outPaper.data[(i*outWidth + k) * 4 + 2] = B;
+                        outPaper.data[(i*outWidth + k) * 4 + 3] = 255;
+                    }
+                }
+                outCtx.putImageData(outPaper, 0, 0);
+
+                
+
+                
+            }
+            function addImage() {
+            
+      
+            
+                
+            }
+          
+        }
+        function chooseMap(v){
+            switch(v){
+                case 1:
+                    openImage(1);
+                    break;
+                case 2:
+                    openImage(2);              
+                    break;
+                case 3:
+                    openImage(3);          
+                    break;
+            }
+        }
+
+        
+    </script>
+</head>
+<body onload='init()'>
+    <form>
+        <img image>
+        <div id="A">
+            <canvas id='inCanvas'></canvas>
+        </div>
+        <div id="B">
+            <canvas id='outCanvas'></canvas>
+        </div>
+   
+        <style>
+             body{
+                background-image: url(original.jpg);
+            }
+            #A{
+                position: absolute;
+                top: 250px;
+                width:1px;
+                height: 1px;
+                left: 3%;
+                right:0;
+                   background-color: rgb(255, 255, 255);
+            }
+            #B{
+                position: absolute;
+                top: 250px;  
+                width:1px;
+                height: 1px;
+                left: 50%;
+                right:0;
+                background-color: rgb(255, 255, 255);
+            }
+        </style>
+        <a class="map1" onclick="chooseMap(1)"></a>
+        <a class="map2" onclick="chooseMap(2)"></a>
+        <a class="map3" onclick="chooseMap(3)"></a>
+    
+    </form> 
+</body>
+</html>
