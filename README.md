@@ -1,6 +1,12 @@
 # image-processing-project
 
+### 프로젝트 소개
+ * 영상의 기하학적 변환으로 확대를 이용한 “월리를 찾아라“ 프로젝트
 
+### 개발 환경
+  * 사용 언어 : HTML5 & CSS3 & JavaScript
+
+### 영상처리 설명
 ![1](https://user-images.githubusercontent.com/71754176/118424645-8be83280-b702-11eb-89a7-716a73f47ad4.jpg)
 
 ![2](https://user-images.githubusercontent.com/71754176/118424723-b3d79600-b702-11eb-883b-16f7f846d1d6.png)
